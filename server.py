@@ -5,6 +5,8 @@ import time
 import threading
 import requests
 import pytesseract
+from dotenv import load_dotenv
+
 
 from datetime import datetime
 from PIL import Image
@@ -13,9 +15,13 @@ from watchdog.events import FileSystemEventHandler
 from openai import OpenAI
 
 # Initialize OpenAI client with API key
-client = OpenAI(
-    api_key="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"
-)
+
+load_dotenv()
+api_key = os.getenv("OPENAI_API_KEY")
+
+
+client = OpenAI(api_key=api_key)
+
 
 # Paths and timestamps
 SCREENSHOT_DIR = os.path.expanduser("~/Pictures/Screenshots")
