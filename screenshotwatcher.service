@@ -1,0 +1,16 @@
+[Unit]
+Description=Screenshot Watcher Service
+After=network.target
+
+[Service]
+Type=simple
+User=YOUR_LINUX_USERNAME
+# If using a virtualenv, activate it here:
+# ExecStart=/home/YOUR_LINUX_USERNAME/path/to/venv/bin/python /home/YOUR_LINUX_USERNAME/path/to/screenshot_watcher.py
+ExecStart=/usr/bin/python3 /home/YOUR_LINUX_USERNAME/path/to/screenshot_watcher.py
+Restart=always
+RestartSec=3
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
